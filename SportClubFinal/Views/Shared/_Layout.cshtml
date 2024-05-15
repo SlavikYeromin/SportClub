@@ -1,0 +1,521 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SportClubFinal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SportClubFinal.styles.css" asp-append-version="true" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    @*<header class="header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+
+                <span class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index" style="color:indianred; font-size:30px;">Зона Спорту</span>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                          
+                        </ul>
+                        <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>*@
+
+    <div class="header">
+        <div class="container">
+            <div class="header-line">
+                <div class="header-logo">
+                    <img style="width:130px;" src="~/Photos/SportEmblem.png" />
+                </div>
+
+                <div class="nav">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </div>
+
+        <div class="header-down">
+            <div class="container">
+                <div class="row rounded" style="border:hidden;">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner h-100">
+                                <div class="carousel-item h-100 active">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto1.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto2.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto14.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto11.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto12.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto5.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto3.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto4.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto8.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto6.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto7.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto9.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto10.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="~/Photos/CarouselPhotos/CarouselPhoto13.jpeg" class="d-block w-100 h-100" alt="Тренажерний зал">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="mb-3">
+                            <h1>Спортивний клуб <span style="color:peachpuff">'Зона Спорту'</span></h1>
+                            <h5 style="color:white;">Надає чудову можливість розпочати або продовжити займатися своїм фізичним станом завдяки:</h5>
+                        </div>
+                        
+                        <ul style="font-weight:600;">
+
+                       
+                        <div class="mb-2 p-3">
+                                <span style="color:white;font-size:21px;">Висококласному тренажерному залу</span>
+                            <span><i class="fa-solid fa-dumbbell mx-2 fs-4"></i></span>
+                        </div>
+                        
+                       
+                        <div class="mb-2 p-3">
+                                <span style="color:white;font-size:21px;">Басейну</span>
+                            <span><i class="fa-solid fa-person-swimming mx-2 fs-4"></i></span>
+                        </div>
+                        
+                        
+                        <div class="mb-2 p-3">
+                                <span style="color:white;font-size:21px;">Широкому вибору спортивних дисциплін</span>
+                            <span><i class="fa-solid fa-table-tennis-paddle-ball mx-2 fs-4"></i></span>
+                            <span><i class="fa-solid fa-person-biking mx-2 fs-4"></i></span>
+                            <span><i class="fa-solid fa-person-running mx-2 fs-4"></i></span>
+                            <span></span>
+                        </div>
+
+                        
+                        <div class="mb-2 p-3">
+                                <span style="color:white;font-size:21px;">SPA-процедурам</span>
+                            <span><i class="fa-solid fa-spa mx-2 fs-4"></i></span>
+                        </div>
+                        
+
+                        
+                        <div class="mb-2 p-3">
+                                <span style="color:white;font-size:21px;">Великому вибору досвідчених фахівців та тренерів</span>
+                            <span><i class="fa-solid fa-users mx-2 fs-4"></i></span>
+                        </div>
+                        
+
+                        
+                        <div class="mb-2 p-3">
+                                <span style="color:white;font-size:21px;">Зручному розкладу, який ви самі вибираєте</span>
+                            <span><i class="fa-regular fa-calendar-days mx-2 fs-4"></i></span>
+                        </div>
+                        
+                        </ul>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="cards">
+                    <div class="container">
+                        <div class="cards-location">
+
+
+                    <div class="card" style="width:450px;">
+                        <a href="#" style="text-decoration:none;color:black;">
+                            <div class="card-image">
+                            <img class="card-img" src="~/Photos/CarouselPhotos/Gym.jpg" />
+                        </div>
+                        
+
+                        <div class="card-title">
+                            Тренажерний зал
+                        </div>
+
+                        </a>
+                    </div>
+                    
+
+                    <div class="card" style="width:450px;">
+                        <a href="#" style="text-decoration:none;color:black;">
+                        <div class="card-image">
+                                <img class="card-img" src="~/Photos/CarouselPhotos/SwimmingPool.jpg" />
+                        </div>
+
+                        <div class="card-title">
+                            Басейн
+                        </div>
+
+                        </a>
+                    </div>
+
+                    <div class="card" style="width:450px;">
+                        <a href="#" style="text-decoration:none;color:black;">
+                            <div class="card-image">
+                                <img class="card-img" src="~/Photos/CarouselPhotos/Fitness.jpg" />
+                            </div>
+
+                            <div class="card-title">
+                                Фітнес
+                            </div>
+                        </a>
+                    </div>
+
+                        </div>  
+                    </div>  
+                </div>
+
+                <br/>
+
+        <div class="cards">
+            <div class="container">
+                <div class="cards-location">
+                    <div class="card" style="width:640px;">
+                        <a href="#" style="text-decoration:none;color:black;">
+                        <div class="card-image">
+                            <img class="card-img" src="~/Photos/CarouselPhotos/Boxing.jpeg" />
+                        </div>
+
+                        <div class="card-title">
+                            Бойові мистецтва
+                        </div>
+
+                        </a>
+                    </div>
+                    <div class="card" style="width:640px;">
+                        <a href="#" style="text-decoration:none;color:black;">
+                        <div class="card-image">
+                            <img class="card-img" src="~/Photos/CarouselPhotos/SPA.jpeg" />
+                        </div>
+
+                        <div class="card-title">
+                            SPA-процедури
+                        </div>
+
+                        </a>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+        @*Про нас*@
+
+        <div class="block">
+            <div class="container">
+                
+                <div class="block-holder">
+
+                <div class="first">
+                    <div class="left-title">
+                        Краще обладнання яке є в світі
+                    </div>
+
+                    <div class="left-text">
+                        Наш спортивний клуб славиться найкращими, новітніми тренажерами, які випускають 
+                        <br />
+                        топові виробники спортивного обладнання.
+                    </div>
+
+                </div>
+
+                <div class="second">
+                    <div class="second-button">
+                        <a href="#" class="right-btn" style="color:white;">Детальніше про Спортивний клуб</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        @*Тренери*@
+
+        <div class="coach">
+            <div class="container">
+                <div class="coach-title">
+                    Тренери
+                </div>
+
+                <div class="coach-content">
+                    <img src="~/Photos/Сoach1.jpg" style="width:420px;height:450px;" />
+                    <img src="~/Photos/Coach2.jpg" style="width:420px;height:450px;" />
+                    <img src="~/Photos/Coach3.jpg" style="width:420px;height:450px;" />
+                </div>
+
+                <br />
+
+                <div class="comment-button">
+                    <a href="#" class="coach-btn" style="color:white;">Побачити усіх тренерів</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        @*Відгуки*@
+
+        <div class="comment">
+            <div class="container">
+                <div class="comment-text">
+                    Дуже рекомендую цей клуб! Мої показники зростають!!! Якісні тренажери на будь-який смак, ввічливий персонал, готовий завжди допомогти, все на високому рівні. Сауна, басеїн та масаж допоможуть вам розслабитися після напружених тренувань!
+                </div>
+
+                <div class="comment-image">
+                    <img src="~/Photos/PhotoComment.jpeg" class="comment-img" />
+                </div>
+
+                <div class="comment-type">
+                    Клієнт
+                </div>
+
+                <div class="comment-name">
+                    Пилипенко Руслан Микитович
+                </div>
+
+                <br/>
+
+                <div class="comment-button">
+                    <a href="#" class="comment-btn" style="color:white;">Залишити Відгук</a>
+                </div>
+                
+
+            </div>
+            
+        </div>
+
+        @*Footer*@
+
+       <div class="container2">
+            <div class="footer-content">
+                <h2 style="color:sandybrown;">Швидкі посилання</h2>
+                <ul class="list">
+                    <li><a href="" style="text-decoration:none;font-size:23px;color:white;width:87px;">Головна</a></li>
+                    <li><a href="" style="text-decoration:none;font-size:23px;color:white;width:135px;">Види Спорту</a></li>
+                    <li><a href="" style="text-decoration:none;font-size:23px;color:white;width:89px;">Тренери</a></li>
+                    <li><a href="" style="text-decoration:none;font-size:23px;color:white;width:165px;">SPA-процедури</a></li>
+                    <li><a href="" style="text-decoration:none;font-size:23px;color:white;width:108px;">Коментарі</a></li>
+                    <li><a href="" style="text-decoration:none;font-size:23px;color:white;width:86px;">Про нас</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h2 style="color:sandybrown;">Контакти:</h2>
+                <ul class="list">
+                    <li style="width:20px;"><a href="" style="font-size:30px;"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li style ="width:25px;"><a href="" style="font-size:30px;color:violet;"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li style="width:20px;"><a href="" style="font-size:30px;color:lightblue;"><i class="fa-brands fa-telegram"></i></a></li>
+                    <li style="width:20px;"><a href="" style="font-size:30px;color:rebeccapurple;"><i class="fa-brands fa-viber"></i></a></li>
+                    <li style="width:20px;"><a href="" style="font-size:30px;color:#ffffff;"><i class="fa-solid fa-envelope"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h2 style="color:sandybrown;">Наша Адреса:</h2>
+                <p style ="color:white;">38394, місто Харків, пров. Лук’янівська, 57</p>
+                <h3 style="color:sandybrown;">Графік роботи:</h3>
+                <p style="color:white;">Пн-Пт: 07.00 - 21.00</p>
+                <p style="color:white;">Сб-Нд: 08.00 - 21.00</p>
+                <h3 style="color:sandybrown;">Номер телефону:</h3>
+                <p style="color:white;">+38(094)717-73-28</p>
+            </div>
+
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+              @*  <div class="row mt-3">
+                    <div class=" col-12 mb-3">
+                        
+                        <hr style="color:black;height:2px;" />
+                        
+                        
+                        <div id="todaySpecial" class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="shadow rounded card">
+                                    <img class="card-img-top h-100" style="position:absolute" src="~/Photos/CarouselPhotos/Gym.jpg" alt="dish" />
+                                    <h2 style="color:peachpuff;position:absolute;text-align:center;">Тренажерний зал</h2>
+                                    <button style="background-color:peachpuff;position:absolute;bottom:0;width:220px; height:80px;font-size:30px;"><a asp-controller="KindOfSport" asp-action="Index" style="text-decoration:none; color:black;text-decoration: none;padding: 0.58em 1.43em;">Перейти</a></button>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="shadow rounded card" style="width:100px;">
+                                    <img class="card-img-top h-100" style="position:absolute;" src="~/Photos/CarouselPhotos/SwimmingPool.jpg" alt="dish" />
+                                    <h2 style="color:peachpuff;position:absolute;text-align:center">Басейн</h2>
+                                    <button style="background-color:peachpuff;position:absolute;bottom:0;width:220px; height:80px;font-size:30px;"><a asp-controller="KindOfSport" asp-action="Index" style="text-decoration:none; color:black;text-decoration: none;padding: 0.58em 1.43em;">Перейти</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row mt-3">
+                    <div class=" col-12 mb-3">
+                        <div id="todaySpecial" class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="shadow rounded card">
+                                    <img class="card-img-top h-100" style="position:absolute" src="~/Photos/CarouselPhotos/Fitness.jpg" alt="dish" />
+                                    <h2 style="color:peachpuff;position:absolute;text-align:center;">Фітнес</h2>
+                                    <button style="background-color:peachpuff;position:absolute;bottom:0;width:220px; height:80px;font-size:30px;"><a asp-controller="KindOfSport" asp-action="Index" style="text-decoration:none; color:black;text-decoration: none;padding: 0.58em 1.43em;">Перейти</a></button>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="shadow rounded card">
+                                    <img class="card-img-top h-100" style="position:absolute" src="~/Photos/CarouselPhotos/Boxing.jpeg" alt="dish" />
+                                    <h2 style="color:peachpuff;position:absolute;text-align:center;">Бойові мистецтва</h2>
+                                    <button style="background-color:peachpuff;position:absolute;bottom:0;width:220px; height:80px;font-size:30px;"><a asp-controller="KindOfSport" asp-action="Index" style="text-decoration:none; color:black;text-decoration: none;padding: 0.58em 1.43em;">Перейти</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class=" col-12 mb-3">
+                        <div id="todaySpecial" class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="shadow rounded card">
+                                    <img class="card-img-top h-100" style="position:absolute" src="~/Photos/CarouselPhotos/SPA.jpeg" alt="dish" />
+                                    <h2 style="color:peachpuff;position:absolute;text-align:center;">SPA</h2>
+                                    <button style="background-color:peachpuff;position:absolute;bottom:0;width:220px; height:80px;font-size:30px;"><a asp-controller="SPA" asp-action="Index" style="text-decoration:none; color:black;text-decoration: none;padding: 0.58em 1.43em;">Перейти</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    </div>*@
+
+    
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+   @* <footer class="border-top text-white p-3">
+        <div class="container mt-2">
+            <div class="row">
+
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+
+                    <br />
+                    <a class="nav-link fw-bold" asp-area="" asp-controller="KindOfSport" asp-action="Index" style="width:290px;"><span style="color:#ffffff;font-size:20px;">Види Спорта</span></a>
+                    <br />
+                    <a class="nav-link fw-bold" asp-area="" asp-controller="Coach" asp-action="Index" style="width:110px;"><span style="color:#ffffff;font-size:20px;">Тренери</span></a>
+                    <br />
+                    <a class="nav-link fw-bold" asp-area="" asp-controller="SPA" asp-action="Index" style="width:57px;"><span style="color:#ffffff;font-size:20px;">SPA</span></a>
+                </div>
+
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                      <br />
+                    <a class="nav-link fw-bold" asp-area="" asp-controller="Comment" asp-action="Index" style="width:110px;"><span style="color:#ffffff;font-size:20px;">Коментарі</span></a>
+                    <br />
+                    <a class="nav-link fw-bold" asp-area="" asp-controller="AboutUs" asp-action="Index" style="width:150px;"><span style="color:#ffffff;font-size:20px;">Про нас</span></a>
+                    <br />
+                </div>
+
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                    <br />
+                    <h4>Контакти</h4>
+                    <br />
+                    <a href="https://www.facebook.com/profile.php?id=100011661152865" style="text-decoration:none;"><span style="color:#0077cf;font-size:35px;"><i class="fa-brands fa-facebook"></i></span> </a>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="https://www.instagram.com/zonasporty24/" style="text-decoration:none;"><span style="color:violet;font-size:35px;"><i class="fa-brands fa-instagram"></i></span></a>
+                    <br />
+                    <br />
+                    <span></span>
+                    <a href="#" style="text-decoration:none;"><span style="color:lightblue;font-size:35px;"><i class="fa-brands fa-telegram"></i></span></a>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp</span>
+                    <a href="https://www.viber.com/ru/" style="text-decoration:none;"><span style="color:rebeccapurple;font-size:35px;"><i class="fa-brands fa-viber"></i></span></a>
+                    <br />
+                    <br />
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <a href="https://www.google.com/intl/ru/gmail/about/" style="text-decoration:none;"><span style="color:#ffffff; font-size:33px;"><i class="fa-solid fa-envelope"></i></span></a>
+                </div>
+
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                    <br />
+                  <h4>Наша Адреса:</h4>
+                    <div style="width:320px;">38394, місто Харків, пров. Лук’янівська, 57</div>
+                    <br />
+                    <h4>Графік роботи:</h4>
+                    <div>Пн-Пт: 07.00 - 21.00</div>
+                    <div>Сб-Нд: 08.00 - 21.00</div>
+                    <br />
+                    <br/>
+                    <h4>+38(094)717-73-28</h4>
+                </div>
+            </div>
+        </div>
+    </footer>*@
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+    
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,102 @@
+﻿@model List<KindOfSport>
+@{
+}
+
+@using Microsoft.AspNetCore.Identity
+@using SportClubFinal.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    if (User.IsInRole("admin"))
+    {
+        <h2 class="text-center mb-5">Список усіх видів спорту</h2>
+
+        <div class="row mb-5">
+            <div class="col">
+                <a class="btn btn-primary" style="width:700px;position:relative;left:50%;transform:translate(-50%,0);" asp-controller="KindOfSport" asp-action="Create">Додати новий вид спорту</a>
+            </div>
+        </div>
+
+        
+        <div class="row mb-5">
+            &nbsp; &nbsp;
+            <div class="col">
+                <form class="d-flex" asp-action="Index" asp-controller="KindOfSport">
+                    <input name="searchString" style="width:500px;height:40px;font-size:20px;" type="search" placeholder="Пошук..." aria-label="Search">
+                    <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button style="width:300px;position:relative;left:20%;transform:translate(-50%,0);background-color:black;" >
+                        <a asp-action="Index" style="text-decoration:none;color:white;">
+                            Побачити список усіх видів спорту
+                        </a>
+                    </button>
+                </form>
+            </div>
+                <div class="col">
+                
+                </div>
+        </div>
+
+        <div class="row mt-5 mb-2">
+            @{
+                foreach (var fightingSport in Model)
+                {
+                    <div class="col-lg-4" style="padding:20px;">
+                        <img class="img-thumbnail" src="/PhotoKindOfSport/@fightingSport.PhotoFile" style="width:450px; height:380px;" />
+                        <h2>@fightingSport.Title</h2>
+                        <p>@fightingSport.Description</p>
+                        <p>
+                            <a class="btn btn-primary btn-sm" asp-controller="KindOfSport" asp-action="Edit" asp-route-id="@fightingSport.Id">Редагувати</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="KindOfSport" asp-action="Delete" asp-route-id="@fightingSport.Id" onclick="return confirm('Ви впевнені?')">Видалити</a>
+                    </div>
+                }
+            }
+        </div>
+    }
+    else if (User.IsInRole("client"))
+    {
+        <h2 class="text-center mb-5">Список усіх видів спорту</h2>
+
+        <div class="row mb-5">
+            <div class="col">
+                <a class="btn btn-success" style="width:700px;position:relative;left:50%;transform:translate(-50%,0);" asp-controller="Client" asp-action="Create">Записатися на вид спорту</a>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            &nbsp; &nbsp;
+            <div class="col">
+                <form class="d-flex" asp-action="Index" asp-controller="KindOfSport">
+                    <input name="searchString" style="width:500px;height:40px;font-size:20px;" type="search" placeholder="Пошук..." aria-label="Search">
+                    <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button style="width:300px;position:relative;left:20%;transform:translate(-50%,0);background-color:black;">
+                        <a asp-action="Index" style="text-decoration:none;color:white;">
+                            Побачити список усіх видів спорту
+                        </a>
+                    </button>
+                </form>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <div class="row mt-5 mb-2">
+            @{
+                foreach (var fightingSport in Model)
+                {
+                    <div class="col-lg-4" style="padding:20px;">
+                        <img class="img-thumbnail" src="/PhotoKindOfSport/@fightingSport.PhotoFile" style="width:450px; height:380px;"/>
+                        <h2>@fightingSport.Title</h2>
+                        <p>@fightingSport.Description</p>
+                    </div>
+                }
+            }
+        </div>
+    }
+}
+
+
+

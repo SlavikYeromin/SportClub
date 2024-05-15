@@ -1,0 +1,48 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <div class="col-lg-6 mx-auto rounded border p-3" style="background-color:steelblue;width:430px;">
+        <h1 class="text-center mb-3" style="color:white;">Реєстрація</h1>
+        <hr style="height:3px;color:black;" />
+
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+            <div class="mb-3">
+                <label class="form-label"><h4>Електронна адреса</h4></label>
+                   <input class="form-control" asp-for="Input.Email" placeholder="Введіть електронну адресу" required/>
+                   <span asp-validation-for="Input.Email" style="color:indianred;background-color:peachpuff;"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><h4>Номер телефону</h4></label>
+                <input class="form-control" asp-for="Input.PhoneNumber" placeholder="Введіть номер телефону" required />
+                <span asp-validation-for="Input.PhoneNumber" style="color:indianred;background-color:peachpuff;"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><h4>Пароль</h4></label>
+                <input class="form-control" asp-for="Input.Password" placeholder="Введіть пароль(Велика літера,цифра,один символ)" required />
+                <span asp-validation-for="Input.Password" style="color:indianred;background-color:peachpuff;"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><h4>Підтвердьте пароль</h4></label>
+                <input class="form-control" asp-for="Input.ConfirmPassword" placeholder="Введіть підтвердження паролю" required />
+                <span asp-validation-for="Input.ConfirmPassword" style="color:indianred;background-color:peachpuff;"></span>
+            </div>
+
+            <div class="row mb-3">
+               <div class="col d-grid">
+                   <button type="submit" class="btn btn-primary" style="border: solid">Зареєструватися</button>
+               </div>
+               <div class="col d-grid">
+                   <a class="btn btn-outline-primary" href="/" role="button" style="color:white; border:solid;">Скасувати</a>
+               </div>
+            </div>
+        </form>
+    </div>
+</div>

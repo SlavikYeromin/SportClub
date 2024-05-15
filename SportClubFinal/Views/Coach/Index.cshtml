@@ -1,0 +1,146 @@
+﻿@*@model List<Coach>*@
+@model IEnumerable<Coach>
+@{
+}
+
+@using Microsoft.AspNetCore.Identity
+@using SportClubFinal.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    if (User.IsInRole("admin"))
+    {
+        <h2 class="text-center mb-5">Список тренерів</h2>
+
+            <div class="row mb-5">
+                <div class="col">
+                    <a class="btn btn-primary" style="width:700px;position:relative;left:50%;transform:translate(-50%,0);" asp-controller="Coach" asp-action="Create">Додати нового тренера</a>
+                </div>
+            </div>
+
+            <div class="col">
+
+            </div>
+
+        <div class="row mb-5">
+            &nbsp; &nbsp;
+            <div class="col">
+                <form class="d-flex" asp-action="Index" asp-controller="Coach">
+                    <input name="searchString" style="width:500px;height:40px;font-size:20px;" type="search" placeholder="Пошук..." aria-label="Search">
+                    <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button style="width:300px;position:relative;left:20%;transform:translate(-50%,0);background-color:black;">
+                        <a asp-action="Index" style="text-decoration:none;color:white;">
+                            Побачити список усіх тренерів
+                        </a>
+                    </button>
+                </form>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+
+        <table class="table" sstyle="border-spacing:10px;border-collapse: separate; width:500px;width:100%;">
+            <thead style="background-color:indianred;height:100px;">
+                <tr>
+                    <th style ="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Фото</th>
+                    <th style ="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Прізвище</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Ім'я</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">По-батькові</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -13%)">Дата народження</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Електронна адреса</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Вид спорту</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -13%)">Ціна за 1 тренування</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Дія</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var coach in Model)
+                {
+                    <tr style="background-color:lightgray">
+                        <td style="text-align:center;width:200px;border: 3px solid black;"><img src="/PhotoCoaches/@coach.PhotoFile" style="width:200px;height:200px;"></td>
+                        <td style ="text-align:center;width:200px;border: 3px solid black;transform: translate(0, 35%)">@coach.LastName</td>
+                        <td style ="text-align:center;width:150px;border: 3px solid black;transform: translate(0, 35%)">@coach.FirstName</td>
+                        <td style ="text-align:center;width:200px;border: 3px solid black;transform: translate(0, 35%)">@coach.MiddleName</td>
+                        <td style ="text-align:center;border: 3px solid black;transform: translate(0, 35%)">@coach.BirthDate.ToShortDateString()</td>
+                        <td style="text-align:center;width:250px;border: 3px solid black;transform: translate(0, 35%)">@coach.Email</td>
+                        <td style="text-align:center;width:200px;border: 3px solid black;transform: translate(0, 35%)">@coach.FightingSports.Title</td>
+                        <td style="text-align:center;width:150px;border: 3px solid black;transform: translate(0, 35%)">@coach.PricePerTraining</td>
+
+                        <td style="white-space:nowrap;text-align:center;border: 3px solid black;transform: translate(0, 35%)">
+            <a class="btn btn-primary btn-sm" asp-controller="Coach" asp-action="Edit"
+                   asp-route-id="@coach.Id" style="height:35px;">Редагувати</a>
+            <a class="btn btn-danger btn-sm" asp-controller="Coach" asp-action="Delete"
+                   asp-route-id="@coach.Id" style="height:35px;" onclick="return confirm('Ви впевнені?')">Видалити</a>
+            </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else if (User.IsInRole("client"))
+    {
+        <h2 class="text-center mb-5">Список тренерів</h2>
+
+        <div class="row mb-5">
+            &nbsp; &nbsp;
+            <div class="col">
+                <form class="d-flex" asp-action="Index" asp-controller="Coach">
+                    <input name="searchString" style="width:500px;height:40px;font-size:20px;" type="search" placeholder="Пошук..." aria-label="Search">
+                    <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button style="width:300px;position:relative;left:20%;transform:translate(-65%,0);background-color:black;">
+                        <a asp-action="Index" style="text-decoration:none;color:white;">
+                            Побачити список усіх тренерів
+                        </a>
+                    </button>
+                    <button style="width:300px;position:relative;left:20%;transform:translate(-50%,0);background-color:orange;">
+                        <a asp-controller="Comment" asp-action="Create"
+                           style="height:35px;text-decoration:none;color:black;padding: 0.58em 4.91em;">Залишити відгук</a>
+                    </button>
+                </form>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <table class="table" sstyle="border-spacing:10px;border-collapse: separate; width:500px;width:100%;">
+            <thead style="background-color:indianred;height:100px;">
+                <tr>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Фото</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Прізвище</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Ім'я</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">По-батькові</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -13%)">Дата народження</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Електронна адреса</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Вид спорту</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -13%)">Ціна за 1 тренування</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var coach in Model)
+                {
+                    <tr style="background-color:lightgray">
+                        <td style="text-align:center;width:200px;border: 3px solid black;"><img src="/PhotoCoaches/@coach.PhotoFile" style="width:200px;height:200px;"></td>
+                        <td style="text-align:center;width:200px;border: 3px solid black;transform: translate(0, 35%)">@coach.LastName</td>
+                        <td style="text-align:center;width:150px;border: 3px solid black;transform: translate(0, 35%)">@coach.FirstName</td>
+                        <td style="text-align:center;width:200px;border: 3px solid black;transform: translate(0, 35%)">@coach.MiddleName</td>
+                        <td style="text-align:center;border: 3px solid black;transform: translate(0, 35%)">@coach.BirthDate.ToShortDateString()</td>
+                        <td style="text-align:center;width:250px;border: 3px solid black;transform: translate(0, 35%)">@coach.Email</td>
+                        <td style="text-align:center;width:200px;border: 3px solid black;transform: translate(0, 35%)">@coach.FightingSports.Title</td>
+                        <td style="text-align:center;width:150px;border: 3px solid black;transform: translate(0, 35%)">@coach.PricePerTraining</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+
+

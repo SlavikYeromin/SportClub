@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Comment>
+
+@using Microsoft.AspNetCore.Identity
+@using SportClubFinal.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    if (User.IsInRole("admin"))
+    {
+        <br />
+
+        <h2 class="text-center mb-5">Усі коментарі</h2>
+
+        <div class="row mb-5">
+            &nbsp; &nbsp;
+            <div class="col">
+                <form class="d-flex" asp-action="Index" asp-controller="Comment">
+                    <input name="searchString" style="width:500px;height:40px;font-size:20px;" type="search" placeholder="Пошук..." aria-label="Search">
+                    <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button style="width:300px;position:relative;left:20%;transform:translate(-50%,0);background-color:black;">
+                        <a asp-action="Index" style="text-decoration:none;color:white;">
+                            Побачити усі відгуки
+                        </a>
+                    </button>
+                </form>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <table class="table" sstyle="border-spacing:10px;border-collapse: separate; width:100px;" style="width:100%;word-break: break-all;table-layout:fixed;">
+            <thead style="background-color:indianred;height:80px;">
+                <tr>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -15%); width:280px;">
+                        <h5>Тренер</h5>
+                    </th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -15%);">
+                        <h5>@Html.DisplayNameFor(model => model.CommentDescription)</h5>
+                    </th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -15%);width:100px;">
+                        <h5>Дія</h5>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var comment in Model)
+                {
+                    <tr style="background-color:lightgray">
+                        <td style="width:900px;border: 3px solid black;transform: translate(0, 0%);text-align:start;max-height:200px;">
+                            @Html.DisplayFor(model => comment.Coaches.LastName)
+                            @Html.DisplayFor(model => comment.Coaches.FirstName)
+                            @Html.DisplayFor(model => comment.Coaches.MiddleName)
+                        </td>
+                        <td style="width:900px;border: 3px solid black;transform: translate(0, 0%);text-align:start;max-height:200px;">
+                            @Html.DisplayFor(model => comment.CommentDescription)
+                        </td>
+                        <td style="width:900px;border: 3px solid black;transform: translate(0, 0%);text-align:start;max-height:200px;">
+                            <a class="btn btn-danger btn-sm" asp-controller="Comment" asp-action="Delete" asp-route-id="@comment.Id" onclick="return confirm('Ви впевнені?')">Видалити</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else if(User.IsInRole("client"))
+    {
+        <br />
+
+        <h2 class="text-center mb-5">Усі коментарі</h2>
+
+        <div class="row mb-5">
+            &nbsp; &nbsp;
+            <div class="col">
+                <form class="d-flex" asp-action="Index" asp-controller="Comment">
+                    <input name="searchString" style="width:500px;height:40px;font-size:20px;" type="search" placeholder="Пошук..." aria-label="Search">
+                    <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button style="width:300px;position:relative;left:20%;transform:translate(-50%,0);background-color:black;">
+                        <a asp-action="Index" style="text-decoration:none;color:white;">
+                            Побачити усі відгуки
+                        </a>
+                    </button>
+                </form>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+
+        <table class="table" sstyle="border-spacing:10px;border-collapse: separate; width:100px;" style="width:100%;word-break: break-all;table-layout:fixed;">
+            <thead style="background-color:indianred;height:80px;">
+                <tr>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -15%); width:280px;">
+                        <h5>Тренер</h5>
+                    </th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -15%);">
+                        <h5>@Html.DisplayNameFor(model => model.CommentDescription)</h5>
+                    </th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -15%);width:192px;">
+                        <h5>Дія</h5>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var comment in Model)
+                {
+                    <tr style="background-color:lightgray">
+                        <td style="width:900px;border: 3px solid black;transform: translate(0, 0%);text-align:start;max-height:200px;">
+                            @Html.DisplayFor(model => comment.Coaches.LastName)
+                            @Html.DisplayFor(model => comment.Coaches.FirstName)
+                            @Html.DisplayFor(model => comment.Coaches.MiddleName)
+                        </td>
+                        <td style="width:900px;border: 3px solid black;transform: translate(0, 0%);text-align:start;max-height:200px;">
+                            @Html.DisplayFor(model => comment.CommentDescription)
+                        </td>
+                        <td style="width:900px;border: 3px solid black;transform: translate(0, 0%);text-align:start;max-height:200px;">
+                            <a asp-action="Edit" asp-route-id="@comment.Id" class="btn btn-success btn-sm">Редагувати</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Comment" asp-action="Delete" asp-route-id="@comment.Id" onclick="return confirm('Ви впевнені?')">Видалити</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+
+
+
+

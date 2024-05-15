@@ -1,0 +1,88 @@
+﻿@model ClientSpaDto
+@{
+}
+
+<br />
+
+<div class="row">
+    <img src="~/Photos/CarouselPhotos/Boxing.jpeg" style="display:block;margin:auto;width:1300px;min-width:1300px;position:absolute;height:1450px;min-height:1450px;" />
+
+
+    <div class="col-md-7 mx-auto rounded border p-3" style="height:1400px;min-height:1400px;width: 680px;min-width:680px;position:relative;top:20px;background:rgba(255,255,207, 0.25);">
+
+        <h1 class="text-center mb-5" style="text-align:center;color:indianred;font-weight:bold;font-family:Cambria;background-color:peachpuff;">Редагування інформації про клієнта(SPA)</h1>
+
+        <form method="post" enctype="multipart/form-data" style="width:970px;">
+
+            <div class="mb-3">
+                <div class="offset-sm-1 col-sm-6">
+                    <img src="/PhotoClients/@ViewData["PhotoFile"]" style="width:450px;height:450px;" />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="offset-sm-2 col-sm-4" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Фото</h4></div>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Photo" style="text-align:center;height:38px;" />
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <div class="offset-sm-2 col-sm-4" style="text-align:center"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Прізвище</h4></div>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="LastName" style="text-align:center;height:50px;" placeholder="Введіть ваше прізвище" />
+                    <span asp-validation-for="LastName" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="offset-sm-2 col-sm-4" style="text-align:center"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Ім'я</h4></div>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="FirstName" style="text-align:center;height:50px;" placeholder="Введіть ваше ім'я" />
+                    <span asp-validation-for="FirstName" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="offset-sm-2 col-sm-4" style="text-align:center"><h4 style="color:white;font-weight:bold;font-family:Cambria;">По-батькові</h4></label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="MiddleName" style="text-align:center;height:50px;" placeholder="Введіть ваше по-батькові" />
+                    <span asp-validation-for="MiddleName" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="offset-sm-2 col-sm-4" style="text-align:center"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Дата народження</h4></label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="BirthDate" style="text-align:center;height:50px;" required />
+                    <span asp-validation-for="BirthDate" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="offset-sm-2 col-sm-4" style="text-align:center"><h4 style="color:white;font-weight:bold;font-family:Cambria;">SPA-процедура</h4></label>
+                <div class="col-sm-8">
+                    <select asp-for="SPAId" class="form-control" asp-items="ViewBag.Spas" style="text-align:center;height:50px;" required>
+                        <option value="">-----</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary" style="width:320px;height:60px;">Підтвердити</button>
+                </div>
+                <div class="col-sm-5 d-grid">
+                    <a class="btn btn-outline-primary" style="width:315px;height:60px;background-color:darkgray;color:white;" asp-controller="Client" asp-action="Index" role="button"><p style="text-align:center;position:relative;top:10px;">Скасувати</p></a>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+</div>
+

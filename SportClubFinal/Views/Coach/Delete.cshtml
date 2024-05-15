@@ -1,0 +1,41 @@
+﻿@model Coach
+
+@{
+    ViewData["Title"] = "Видалити тренера";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <div class="container">
+        <div class="mb-2">
+            <label asp-for="LastName" class="control-label"></label>
+            <input asp-for="LastName" class="form-control" readonly />
+        </div>
+        <div class="mb-2">
+            <label asp-for="FirstName" class="control-label"></label>
+            <input asp-for="FirstName" class="form-control" readonly />
+
+        </div>
+        <div class="mb-2">
+            <label asp-for="MiddleName" class="control-label"></label>
+            <input asp-for="MiddleName" class="form-control" readonly />
+        </div>
+        <div class="mb-2">
+            <label asp-for="BirthDate" class="control-label"></label>
+            <input asp-for="BirthDate" class="form-control" readonly />
+        </div>
+        <div class="mb-2">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" readonly />
+        </div>
+        <div class="mb-2">
+            <label asp-for="PricePerTraining" class="control-label"></label>
+            <input asp-for="PricePerTraining" class="form-control" readonly />
+        </div>
+        <div>
+            <input type="submit" value="Видалити" class="btn btn-danger btn-sm" />
+        </div>
+    </div>
+</form>

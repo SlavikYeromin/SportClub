@@ -1,0 +1,357 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using SportClubFinal.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+
+    if(User.IsInRole("admin"))
+    {
+            @*<div class="nav">
+                <a class="nav-item" id="login" asp-area="Identity" asp-page="/Account/Login" style="padding:7px;">УВІЙТИ</a>
+
+                <span style="border-right: 1px solid #FFFFFF;height:40px;"></span>
+
+                <a class="nav-item" id="register" asp-area="Identity" asp-page="/Account/Register" style="padding:7px;">РЕЄСТРАЦІЯ</a>
+            </div>*@
+
+
+
+
+           @*  <header class="header">
+        <nav>
+            
+            <div class="container-fluid">
+
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                       
+                        <ul class="navbar-nav flex-grow-1">
+
+
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="Home" asp-action="Index">Головна</a>
+        </li>
+        
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="KindOfSport" asp-action="Index">Види спорту</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="SPA" asp-action="Index">SPA</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="Coach" asp-action="Index">Тренери</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="Comment" asp-action="Index">Коментарі</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="Client" asp-action="Index">Клієнти(Спорт)</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="ClientSpa" asp-action="Index">Клієнти(SPA)</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Контакти
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=100011661152865"><i class="fa-brands fa-facebook"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Facebook</span> </i></a></li>
+                                            <li><a class="dropdown-item" href="https://www.instagram.com/zonasporty24/"><span style="color:violet"><i class="fa-brands fa-instagram"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Instagram</span></i></span></a></li>
+        <li><a class="dropdown-item" href="#"><span style="color:lightblue"><i class="fa-brands fa-telegram"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Telegram</span></i></span></a></li>
+        <li><a class="dropdown-item" href="https://www.viber.com/ru/"><span style="color:rebeccapurple"><i class="fa-brands fa-viber"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Viber</span></i></span></a>+38(094)717-73-28</li>
+        <li><a class="dropdown-item" href="https://www.google.com/intl/ru/gmail/about/"><span style="color:lightslategrey"><i class="fa-solid fa-envelope"><span style="font-family:'Times New Roman', Times, serif; font-size:18px; font-weight:100"> Ел.Пошта</span></i></span></a>ZonaSporty@gmail.com</li>
+        </ul>
+
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">Адмін</a>
+                <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Вийти</a></li>
+                </ul>
+            </li>
+            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>*@
+
+
+
+
+                                    <div class="nav">
+
+
+                <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Index" style="padding:7px;">Головна</a>
+
+                                    <span style="border-right: 1px solid black;height:40px;"></span>
+
+
+
+                <a class="nav-item" asp-area="" asp-controller="KindOfSport" asp-action="Index" style="padding:7px;">Види спорту</a>
+
+                <span style="border-right: 1px solid black;height:40px;"></span>
+
+
+
+                <a class="nav-item" asp-area="" asp-controller="SPA" asp-action="Index" style="padding:7px;">SPA</a>
+
+                <span style="border-right: 1px solid black;height:40px;"></span>
+
+
+
+                <a class="nav-item" asp-area="" asp-controller="Coach" asp-action="Index" style="padding:7px;">Тренери</a>
+
+
+                <span style="border-right: 1px solid black;height:40px;"></span>
+
+
+                <a class="nav-item" asp-area="" asp-controller="Comment" asp-action="Index" style="padding:7px;">Коментарі</a>
+
+
+                <span style="border-right: 1px solid black;height:40px;"></span>
+
+
+                <a class="nav-item" asp-area="" asp-controller="Client" asp-action="Index" style="padding:7px;">Клієнти(Спорт)</a>
+
+
+                <span style="border-right: 1px solid black;height:40px;"></span>
+
+
+                <a class="nav-item" asp-area="" asp-controller="ClientSpa" asp-action="Index" style="padding:7px;">Клієнти(SPA)</a>
+
+                <span style="border-right: 1px solid black;height:40px;"></span>
+
+                &nbsp;
+               
+                <li class="nav-item">
+                     <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="font-family: Arial;font-weight: 900;font-size: 18px;">
+                                    Контакти
+                                </button>
+                                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                       <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=100011661152865"><i class="fa-brands fa-facebook"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Facebook</span> </i></a></li>
+                                            <li><a class="dropdown-item" href="https://www.instagram.com/zonasporty24/"><span style="color:violet"><i class="fa-brands fa-instagram"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Instagram</span></i></span></a></li>
+                                            <li><a class="dropdown-item" href="#"><span style="color:lightblue"><i class="fa-brands fa-telegram"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Telegram</span></i></span></a></li>
+                                            <li><a class="dropdown-item" href="https://www.viber.com/ru/"><span style="color:rebeccapurple"><i class="fa-brands fa-viber"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Viber</span></i></span></a>+38(094)717-73-28</li>
+                                            <li><a class="dropdown-item" href="https://www.google.com/intl/ru/gmail/about/"><span style="color:lightslategrey"><i class="fa-solid fa-envelope"><span style="font-family:'Times New Roman', Times, serif; font-size:18px; font-weight:100"> Ел.Пошта</span></i></span></a>ZonaSporty@gmail.com</li>
+                                   </ul>
+                     </div>
+
+                </li>
+            &nbsp;
+            <span style="border-right: 1px solid black;height:40px;"></span>
+
+            &nbsp; &nbsp;
+
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color:white;font-family: Arial;font-weight: 400;font-size: 18px;">Адмін</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Вийти</a></li>
+                                    </ul>
+
+                                    </div>
+                               
+
+                   
+    }
+    else if(User.IsInRole("client"))
+    {
+       @* <header class="header">
+            
+            <nav>
+            
+                <div class="container-fluid">
+                
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    
+                        <ul class="navbar-nav flex-grow-1">
+
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="Home" asp-action="Index">Головна</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+         <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="KindOfSport" asp-action="Index">Види спорту</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+        
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="SPA" asp-action="Index">SPA</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+        
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="Coach" asp-action="Index">Тренери</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="Comment" asp-action="Index">Коментарі</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <a class="nav-link text-color fw-bold" asp-area="" asp-controller="AboutUs" asp-action="Index" style="width:114px;">Про нас</a>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item">
+        <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Контакти
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=100011661152865"><i class="fa-brands fa-facebook"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Facebook</span> </i></a></li>
+        <li><a class="dropdown-item" href="https://www.instagram.com/zonasporty24/"><span style="color:violet"><i class="fa-brands fa-instagram"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Instagram</span></i></span></a></li>
+        <li><a class="dropdown-item" href="#"><span style="color:lightblue"><i class="fa-brands fa-telegram"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Telegram</span></i></span></a></li>
+        <li><a class="dropdown-item" href="https://www.viber.com/ru/"><span style="color:rebeccapurple"><i class="fa-brands fa-viber"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Viber</span></i></span></a>+38(094)717-73-28</li>
+        <li><a class="dropdown-item" href="https://www.google.com/intl/ru/gmail/about/"><span style="color:lightslategrey"><i class="fa-solid fa-envelope"><span style="font-family:'Times New Roman', Times, serif; font-size:18px; font-weight:100"> Ел.Пошта</span></i></span></a>ZonaSporty@gmail.com</li>
+        </ul>
+        </li>
+
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+
+        <li class="nav-item dropdown">
+
+        <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">Клієнт</a>
+                <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Вийти</a></li>
+                </ul>
+        </li>
+                           </ul>
+
+                     </div>
+
+                </div>
+          </nav>
+        </header>*@
+
+                                    <div class="nav">
+
+
+
+                                    <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Index" style="padding:7px;">Головна</a>
+                               
+
+                                    <span style="border-right: 1px solid black;height:40px;"></span>
+
+                                
+                                    <a class="nav-item" asp-area="" asp-controller="KindOfSport" asp-action="Index" style="padding:7px;">Види спорту</a>
+                               
+
+                                    <span style="border-right: 1px solid black;height:40px;"></span>
+
+                                
+                                    <a class="nav-item" asp-area="" asp-controller="SPA" asp-action="Index" style="padding:7px;">SPA</a>
+
+
+                                    <span style="border-right: 1px solid black;height:40px;"></span>
+
+                               
+                                    <a class="nav-item" asp-area="" asp-controller="Coach" asp-action="Index" style="padding:7px;">Тренери</a>
+
+
+                                    <span style="border-right: 1px solid black;height:40px;"></span>
+
+                                
+                                    <a class="nav-item" asp-area="" asp-controller="Comment" asp-action="Index" style="padding:7px;">Коментарі</a>
+
+                                    <span style="border-right: 1px solid black;height:40px;"></span>
+
+                               
+                                    <a class="nav-item" asp-area="" asp-controller="AboutUs" asp-action="Index" style="padding:7px;">Про нас</a>
+
+                                    <span style="border-right: 1px solid black;height:40px;"></span>
+                &nbsp;
+
+                                <li class="nav-item">
+                                    <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="font-family: Arial;font-weight: 900;font-size: 18px;">
+                                            Контакти
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=100011661152865"><i class="fa-brands fa-facebook"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Facebook</span> </i></a></li>
+                                            <li><a class="dropdown-item" href="https://www.instagram.com/zonasporty24/"><span style="color:violet"><i class="fa-brands fa-instagram"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Instagram</span></i></span></a></li>
+                                            <li><a class="dropdown-item" href="#"><span style="color:lightblue"><i class="fa-brands fa-telegram"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Telegram</span></i></span></a></li>
+                                            <li><a class="dropdown-item" href="https://www.viber.com/ru/"><span style="color:rebeccapurple"><i class="fa-brands fa-viber"><span style="font-family:'Times New Roman', Times, serif; font-size:18px;"> Viber</span></i></span></a>+38(094)717-73-28</li>
+                                            <li><a class="dropdown-item" href="https://www.google.com/intl/ru/gmail/about/"><span style="color:lightslategrey"><i class="fa-solid fa-envelope"><span style="font-family:'Times New Roman', Times, serif; font-size:18px; font-weight:100"> Ел.Пошта</span></i></span></a>ZonaSporty@gmail.com</li>
+                                        </ul>
+                                </li>
+                            &nbsp;
+
+                                    <span style="border-right: 1px solid black;height:40px;"></span>
+
+            &nbsp;&nbsp;
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color:white;font-family: Arial;font-weight: 400;font-size: 18px;">Клієнт</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Вийти</a></li>
+                                    </ul>
+                                
+                                    </div>
+
+    }
+
+    
+}
+else
+{
+       @* <li class="nav-item">
+            <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login" style=" font-weight:600;">Увійти</a>
+        </li>
+        
+        <span style="padding:6px;font-weight:900;color:indianred">|</span>
+        
+        <li class="nav-item">
+            <a class="nav-link" id="register" asp-area="Identity" asp-page="/Account/Register" style="font-weight:600">Реєстрація</a>
+        </li>*@
+
+        
+
+        <div class="nav">
+            <a class="nav-item" id="login" asp-area="Identity" asp-page="/Account/Login" style="padding:7px;">УВІЙТИ</a>
+
+            <span style="border-right: 1px solid black;height:40px;"></span>
+
+            <a class="nav-item" id="register" asp-area="Identity" asp-page="/Account/Register" style="padding:7px;">РЕЄСТРАЦІЯ</a>
+        </div>
+
+}
+</ul>
+
+

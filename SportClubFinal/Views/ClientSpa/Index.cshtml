@@ -1,0 +1,98 @@
+﻿@model List<ClientSpa>
+@{
+}
+
+@using Microsoft.AspNetCore.Identity
+@using SportClubFinal.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    if (User.IsInRole("admin"))
+    {
+        <h2 class="text-center mb-5">Список клієнтів</h2>
+
+        <div class="row mb-5">
+            <div class="col">
+                <a class="btn btn-primary" style="width:700px;position:relative;left:50%;transform:translate(-50%,0);" asp-controller="ClientSpa" asp-action="Create">Додати нового клієнта(SPA)</a>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            &nbsp; &nbsp;
+            <div class="col">
+                <form class="d-flex" asp-action="Index" asp-controller="ClientSpa">
+                    <input name="searchString" style="width:500px;height:40px;font-size:20px;" type="search" placeholder="Пошук..." aria-label="Search">
+                    <button class="btn btn-dark" type="submit" style="height:40px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button style="width:300px;position:relative;left:20%;transform:translate(-50%,0);background-color:black;">
+                        <a asp-action="Index" style="text-decoration:none;color:white;">
+                            Побачити список усіх клієнтів
+                        </a>
+                    </button>
+                </form>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <table class="table" sstyle="border-spacing:10px;border-collapse: separate; width:500px;width:100%;">
+
+            <thead style="background-color:indianred; height:100px;">
+                <tr>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Фото</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Прізвище</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Ім'я</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">По-батькові</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Дата народження</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">SPA-процедура</th>
+                    <th style="text-align:center;color:white;border: 3px solid black;transform: translate(0, -25%)">Дія</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var client in Model)
+                {
+                    <tr style="background-color:lightgray">
+                        <td style="text-align:center;width:200px;border: 3px solid black;"><img src="/PhotoClients/@client.PhotoFile" style="width:200px;height:200px;"></td>
+                        <td style="text-align:center;width:200px;border: 3px solid black;transform: translate(0, 35%)">@client.LastName</td>
+                        <td style="text-align:center;width:150px;border: 3px solid black;transform: translate(0, 35%)">@client.FirstName</td>
+                        <td style="text-align:center;width:200px;border: 3px solid black;transform: translate(0, 35%)">@client.MiddleName</td>
+                        <td style="text-align:center;border: 3px solid black;transform: translate(0, 35%)">@client.BirthDate.ToShortDateString()</td>
+                        <td style="text-align:center;width:200px;border: 3px solid black;transform: translate(0, 35%)">@client.Spass.Title</td>
+
+                        <td style="white-space:nowrap;text-align:center;border: 3px solid black;transform: translate(0, 35%)">
+                            <a class="btn btn-primary btn-sm" asp-controller="ClientSpa" asp-action="Edit"
+                   asp-route-id="@client.Id" style="height:35px;">Редагувати</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="ClientSpa" asp-action="Delete"
+                   asp-route-id="@client.Id" style="height:35px;" onclick="return confirm('Ви впевнені?')">Видалити</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else if (User.IsInRole("client"))
+    {
+        <div class="row shadow rounded" style="height:320px; width:360px;position:relative;left:50%;transform:translate(-50%,0);">
+            <div style="text-align:center;">
+                <br />
+                <h1>Дякуємо!</h1>
+                <br />
+                <img style="height:60px;" src="~/Photos/Galochka.png">
+                <h5>Клієнт успішно записаний.</h5>
+                <br />
+                <br />
+                <button class="btn btn-success" style="width:250px;height:50px;" href="/"><a asp-controller="Home" asp-action="Index" style="text-decoration:none;color:white;">Повернутися на головну</a></button>
+            </div>
+
+        </div>
+
+    }
+}
+
+
+
+
+

@@ -1,0 +1,42 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Вхід";
+}
+
+<div class="row">
+    <div class="col-md-4 mx-auto rounded border p-3" style="background-color:steelblue;">
+        <section>
+            <h1 class="text-center mb-3" style="color:white;">Вхід</h1>
+            <hr style="height:3px;color:black;"/>
+            <div asp-validation-summary="ModelOnly" style="color:indianred;background-color:peachpuff;width:220px;" role="alert"></div>
+            
+            <form id="account" method="post">
+                
+                <div class="mb-3">
+                    <label class="form-label"><h4>Електронна адреса</h4></label>
+                    <input asp-for="Input.Email" class="form-control" placeholder="Введіть електронну адресу" required/>
+                    <span asp-validation-for="Input.Email" style="color:indianred;background-color:peachpuff;"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><h4>Пароль</h4></label>
+                    <input asp-for="Input.Password" class="form-control" placeholder="Введіть пароль" required/>
+                    <span asp-validation-for="Input.Password" style="color:indianred;background-color:peachpuff;"></span>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col d-grid">
+                        <button type="submit" class="btn btn-primary" style="border: solid" >Увійти</button>
+                    </div>
+                    <div class="col d-grid">
+                        <a class="btn btn-outline-primary" href="/" role="button" style="color:white; border:solid;">Скасувати</a>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+    </div>
+    
+</div>

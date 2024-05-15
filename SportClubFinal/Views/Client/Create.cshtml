@@ -1,0 +1,155 @@
+﻿@model ClientDto
+@{
+}
+
+@using Microsoft.AspNetCore.Identity
+@using SportClubFinal.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if(SignInManager.IsSignedIn(User))
+{
+    if(User.IsInRole("admin"))
+    {
+        <br />
+
+        <div class="row">
+            <img src="~/Photos/CarouselPhotos/AboutUs.jpeg" style="display:block;margin:auto;width:1300px;min-width:1300px;position:absolute;height:980px;min-height:980px;" />
+
+            <div class="col-md-7 mx-auto rounded border p-3" style="height:935px;min-height:935px;width: 680px;min-width:680px;position:relative;top:20px;background: rgba(255,255,207, 0.25);">
+
+                <h1 class="text-center mb-5" style="text-align:center;color:indianred;font-weight:bold;font-family:Cambria;background-color:peachpuff;">Додавання нового клієнта</h1>
+
+                <form method="post" enctype="multipart/form-data" style="width:650px;">
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Фото</h4></div>
+                        <input class="form-control" asp-for="Photo" style="text-align:center;height:38px;" required title="Поле фото має бути заповнено" />
+                        <span asp-validation-for="Photo" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Прізвище</h4></div>
+                        <input class="form-control" asp-for="LastName" style="text-align:center;height:50px;" placeholder="Введіть ваше прізвище" title="Прізвище було написано не вірно" required />
+                        <span asp-validation-for="LastName" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Ім'я</h4></div>
+                        <input class="form-control" asp-for="FirstName" style="text-align:center;height:50px;" placeholder="Введіть ваше ім'я" title="Ім'я було написано не вірно" required />
+                        <span asp-validation-for="FirstName" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">По-батькові</h4></div>
+                        <input class="form-control" asp-for="MiddleName" style="text-align:center;height:50px;" placeholder="Введіть ваше по-батькові" title="По-батькові було написано не вірно" required />
+                        <span asp-validation-for="MiddleName" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Дата народження</h4></div>
+                        <input class="form-control" asp-for="BirthDate" style="text-align:center;height:50px;" type="date" name="birthdate" max="2008-05-03" required />
+                        <span asp-validation-for="BirthDate" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Вид спорту</h4></div>
+                        <select asp-for="FightingSportId" class="form-control" asp-items="ViewBag.FightingSports" style="text-align:center;height:50px;" title="Оберіть вид спорту" required>
+                            <option value="">-----</option>
+                        </select>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-4 d-grid">
+                            <button type="submit" class="btn btn-primary" style="width:320px;height:60px;">Підтвердити</button>
+                        </div>
+
+                        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+                        <div class="col-sm-5 d-grid">
+                            <a class="btn btn-outline-primary" style="width:315px;height:60px;background-color:darkgray;color:white;" asp-controller="Client" asp-action="Index" role="button"><p style="text-align:center;position:relative;top:10px;">Скасувати</p></a>
+                        </div>
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+    }
+    else if (User.IsInRole("client"))
+    {
+        <br />
+
+        <div class="row">
+            <img src="~/Photos/CarouselPhotos/AboutUs.jpeg" style="display:block;margin:auto;width:1300px;min-width:1300px;position:absolute;height:980px;min-height:980px;" />
+
+            <div class="col-md-7 mx-auto rounded border p-3" style="height:935px;min-height:935px;width: 680px;min-width:680px;position:relative;top:20px;background: rgba(255,255,207, 0.25);">
+
+                <h1 class="text-center mb-5" style="text-align:center;color:indianred;font-weight:bold;font-family:Cambria;background-color:peachpuff;">Запис на вид спорту</h1>
+
+                <form method="post" enctype="multipart/form-data" style="width:650px;">
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Фото</h4></div>
+                        <input class="form-control" asp-for="Photo" style="text-align:center;height:38px;" required title="Поле фото має бути заповнено" />
+                        <span asp-validation-for="Photo" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Прізвище</h4></div>
+                        <input class="form-control" asp-for="LastName" style="text-align:center;height:50px;" placeholder="Введіть ваше прізвище" title="Прізвище було написано не вірно" required />
+                        <span asp-validation-for="LastName" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Ім'я</h4></div>
+                        <input class="form-control" asp-for="FirstName" style="text-align:center;height:50px;" placeholder="Введіть ваше ім'я" title="Ім'я було написано не вірно" required />
+                        <span asp-validation-for="FirstName" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">По-батькові</h4></div>
+                        <input class="form-control" asp-for="MiddleName" style="text-align:center;height:50px;" placeholder="Введіть ваше по-батькові" title="По-батькові було написано не вірно" required />
+                        <span asp-validation-for="MiddleName" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Дата народження</h4></div>
+                        <input class="form-control" asp-for="BirthDate" style="text-align:center;height:50px;" type="date" name="birthdate" max="2008-05-03" required />
+                        <span asp-validation-for="BirthDate" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Вид спорту</h4></div>
+                        <select asp-for="FightingSportId" class="form-control" asp-items="ViewBag.FightingSports" style="text-align:center;height:50px;" title="Оберіть вид спорту" required>
+                            <option value="">-----</option>
+                        </select>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-4 d-grid">
+                            <button type="submit" class="btn btn-primary" style="width:320px;height:60px;">Підтвердити</button>
+                        </div>
+
+                        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+                        <div class="col-sm-5 d-grid">
+                            <a class="btn btn-outline-primary" style="width:315px;height:60px;background-color:darkgray;color:white;" asp-controller="KindOfSport" asp-action="Index" role="button"><p style="text-align:center;position:relative;top:10px;">Скасувати</p></a>
+                        </div>
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+    }
+}
+
+

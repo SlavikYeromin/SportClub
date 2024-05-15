@@ -1,0 +1,61 @@
+﻿@model KindOfSportDto
+@{
+}
+
+<div class="row">
+
+    <img src="~/Photos/CarouselPhotos/Boxing.jpeg" style="display:block;margin:auto;width:1300px;min-width:1300px;position:absolute;height:1120px;min-height:1120px;" />
+
+    <div class="col-md-7 mx-auto rounded border p-3" style="height:1070px;min-height:1070px;width: 680px;min-width:680px;position:relative;top:20px;background:rgba(255,255,207, 0.25);">
+
+        <h1 class="text-center mb-5" style="text-align:center;color:indianred;font-weight:bold;font-family:Cambria;background-color:peachpuff;">Редагування інформації про вид спорту</h1>
+
+        <form method="post" enctype="multipart/form-data" style="width:970px;">
+
+            <div class="mb-3">
+                <div class="offset-sm-2 col-sm-4" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Назва</h4></div>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Title" style="text-align:center;height:50px;" placeholder="Введіть назву вида спорту" />
+                    <span asp-validation-for="Title" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="offset-sm-2 col-sm-4" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Опис</h4></div>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Description" style="text-align:center;height:50px;" placeholder="Введіть опис вида спорту" />
+                    <span asp-validation-for="Description" class="offset-sm-4 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="offset-sm-1 col-sm-6">
+                    <img src="/PhotoKindOfSport/@ViewData["PhotoFile"]" style="width:450px;height:450px;" />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="offset-sm-2 col-sm-4" style="text-align:center;"><h4 style="color:white;font-weight:bold;font-family:Cambria;">Фото</h4></div>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Photo" style="text-align:center;height:38px;" />
+                    <span asp-validation-for="Photo" class="offset-sm-5 col-sm-4" style="color:indianred;background-color:peachpuff;"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary" style="width:320px;height:60px;">Підтвердити</button>
+                </div>
+                <div class="col-sm-5 d-grid">
+                    <a class="btn btn-outline-primary" style="width:315px;height:60px;background-color:darkgray;color:white;" asp-controller="KindOfSport" asp-action="Index" role="button">
+                        <p style ="text-align:center;position:relative;top:10px;">Скасувати</p>
+                    </a>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>
+

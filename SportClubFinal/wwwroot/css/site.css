@@ -1,0 +1,332 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+    /*margin-bottom: 500px;
+    min-height: 100%;*/
+    margin: 0;
+}
+
+/* Цвет верхнего меню */
+.text-color {
+    color: black !important;
+    height: 30px;
+}
+
+/* Верхнее меню */
+.navbar{
+    background-color: peachpuff;
+    height: 100px;
+}
+
+/* Расстояние между буквами в верхнем меню */
+.nav-link{
+    letter-spacing: 5px;
+    color:black;
+}
+
+/*ul.navbar-nav {
+    background-color: indianred;
+}
+*/
+
+.nav-link:hover{
+    color:indianred;
+}
+
+.nav-link:active {
+    color: indianred;
+}
+
+/* Левая стрелка на carousel */
+.carousel-control-prev-icon {
+    background-color: black;
+    width: 60px;
+    height: 60px;
+    border-bottom-left-radius: 40%;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 40%;
+    border-bottom-right-radius: 40%;
+}
+
+/* Правая стрелка на carousel */
+.carousel-control-next-icon {
+    background-color: black;
+    width: 60px;
+    height: 60px;
+    border-bottom-left-radius: 40%;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 40%;
+    border-bottom-right-radius: 40%;
+}
+
+/* Размер фото в carousel */
+#carouselExampleControls {
+    height: 540px;
+}
+
+.header {
+    /*z-index: 1000;*/
+    background-image: url(../Photos/BackgroundFonn.jpg);
+    height: 87vh; /* Растягивается на всю высоту экрана */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-fluid {
+    text-align:start;
+    padding: 70px;
+}
+
+///////////////////////////////////////////
+.container{
+    margin: 0px 166px;
+}
+
+.header-line{
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-item{
+    color: #fff;
+    text-decoration: none;
+    font-family: Arial;
+    font-weight: 900;
+    font-size: 18px;
+    margin-right:0px;
+    transition: color 0.3s linear;
+}
+
+.nav-item:hover{
+    color: peachpuff;
+}
+
+.card-image{
+    display: flex;
+    justify-content:center;
+    height: 400px;
+}
+
+.card-title {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    width:100%;
+}
+
+.card-desc {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    box-shadow:10px 10px 40px 20px #0000001A;
+    /*width:640px;*/
+}
+
+.cards-location
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+a 
+{
+    display: block;
+    position: relative;
+}
+
+.card a:after 
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    opacity: 0;
+    }
+
+.card a:before 
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(icon-path);
+    opacity: 0;
+}
+
+.card a:hover:before,
+    a:hover:after 
+{
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.block {
+    background-image: url(../Photos/BackgroundFon2.jpg);
+    padding: 80px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.left-title {
+    color: sandybrown;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.left-text{
+    font-weight:700;
+    font-size: 20px;
+    color: #fff;
+}
+
+.right-btn{
+    background-color: dodgerblue;
+    color: white;
+    text-decoration: none;padding: 14px 18px;
+    font-weight: 700;
+    width:310px;
+}
+
+    .right-btn:hover {
+        background-color: royalblue;
+        transition: 0.5s;
+    }
+
+.block-holder{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.comment{
+    background-color: #E5E5E5;
+    padding-top: 104px;
+    padding-bottom: 139px;
+    font-size:20px;
+}
+
+.comment-text{
+    text-align:center;
+    font-family: 'Times New Roman';
+    margin-bottom: 20px;
+}
+
+.comment-img {
+    border-radius: 100%;
+    width: 150px;
+    height:150px;
+}
+
+.comment-image{
+    text-align:center;
+}
+
+.comment-type{
+    font-weight: 700;
+    font-size: 20px;
+    text-align:center;
+}
+
+.comment-name
+{
+    padding-top:10px;
+    font-size:20px;
+    font-weight:400;
+    text-align:center;
+}
+
+.comment-btn {
+    background-color: dodgerblue;
+    color: white;
+    text-decoration: none;
+    padding: 14px 18px;
+    font-weight: 700;
+    width: 250px;
+    text-align:center;
+}
+
+.comment-btn:hover {
+    background-color: royalblue;
+    transition: 0.5s;
+}
+
+.comment-button {
+    display: flex;
+    justify-content: center;
+}
+
+.coach-title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 55px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.coach-content{
+    display: flex;
+    justify-content: space-around;
+}
+
+.coach-btn {
+    background-color: dodgerblue;
+    color: white;
+    text-decoration: none;
+    padding: 14px 18px;
+    font-weight: 700;
+    width: 250px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.coach-btn:hover{
+    background-color: royalblue;
+    transition: 0.5s;
+}
+
+.container2 {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    background-color: #343434;
+}
+
+.footer-content{
+    padding:100px;
+}
+
+.list li{
+    width:auto;
+    list-style-type: none;
+    padding: 10px;
+    position: relative;
+}
